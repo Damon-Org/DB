@@ -1,4 +1,4 @@
-import BaseModule from './structures/EventModule.js'
+import EventModule from './structures/EventModule.js'
 import mysql from 'mysql2/promise.js'
 
 export default class DB extends EventModule {
