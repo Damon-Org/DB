@@ -1,8 +1,12 @@
-export default class BaseModule {
+import { EventEmitter } from 'events'
+
+export default class EventModule extends EventEmitter {
     /**
-     * @param {Main} main
+     * @param {Main} main The program entrypoint class
      */
     constructor(main) {
+        super();
+
         this._m = main;
     }
 
@@ -54,6 +58,6 @@ export default class BaseModule {
      * @param {string} moduleName
      */
     getModule(moduleName) {
-        return this._m.moduleManager.get(moduleName);
+        return this._m.modules.get(moduleName);
     }
 }

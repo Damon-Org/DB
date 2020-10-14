@@ -1,7 +1,7 @@
-import BaseModule from './structures/BaseModule.js'
+import BaseModule from './structures/EventModule.js'
 import mysql from 'mysql2/promise.js'
 
-export default class DB extends BaseModule {
+export default class DB extends EventModule {
     /**
      * @param {Main} main
      */
@@ -25,6 +25,8 @@ export default class DB extends BaseModule {
         this._pool = mysql.createPool(this.config.development ? this.auth.credentials.db.dev : this.auth.credentials.db.prod);
 
         this.log.info('DB', 'Created MySQL Promise Connection Pool.');
+
+        this.emit('ready');
 
         return true;
     }
